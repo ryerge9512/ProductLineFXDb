@@ -8,7 +8,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ProductLineController">
    <children>
       <TabPane prefHeight="200.0" prefWidth="316.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -27,15 +27,15 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <TextField GridPane.columnIndex="1" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="prodName" GridPane.columnIndex="1" />
+                              <TextField fx:id="manufacturer" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="itemType" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Label prefHeight="17.0" prefWidth="79.0" text="Product Name" />
                               <Label prefHeight="17.0" prefWidth="82.0" text="Manufacturer" GridPane.rowIndex="1" />
                               <Label prefHeight="17.0" prefWidth="75.0" text="Item Type" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
-                        <Button layoutX="165.0" layoutY="138.0" mnemonicParsing="false" text="Add Product" />
+                        <Button fx:id="addProd" layoutX="165.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleAddProductButtonAction" stylesheets="@ProductLine.css" text="Add Product" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -58,4 +58,5 @@
    <rowConstraints>
       <RowConstraints />
    </rowConstraints>
+
 </GridPane>
