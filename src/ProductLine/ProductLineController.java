@@ -24,6 +24,11 @@ public class ProductLineController {
   protected void handleAddProductButtonAction(ActionEvent event) {
     System.out.println("Add Product button pressed.");
   }
+
+  @FXML
+  protected void handleRecordProdButtonAction(ActionEvent event) {
+    System.out.println("Record Production button pressed.");
+  }
 }
 
 
