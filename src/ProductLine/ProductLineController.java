@@ -14,20 +14,21 @@ public class ProductLineController extends DatabaseOrg {
 
   @FXML
   private TextField prodName;
+
   @FXML
   private TextField manufacturer;
+
   @FXML
   private TextField itemType;
-
-  private DatabaseOrg db;
 
 
   @FXML
   protected void handleAddProductButtonAction(ActionEvent event) {
+    DatabaseOrg db = new DatabaseOrg(prodName.getText(), manufacturer.getText(),
+        itemType.getText());
 
-    System.out.println(prodName.getText() + " " + manufacturer.getText() + " " + itemType.getText());
-    // DatabaseOrg db = new DatabaseOrg(prodName, manufacturer, itemType);
-
+    // System.out.println(prodName.getText() + " " + manufacturer.getText() + " "
+    // + itemType.getText());
   }
 
   @FXML
