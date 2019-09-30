@@ -12,6 +12,8 @@ Currently debugging database. Demonstration will be added later.
 
 ## Documentation
 
+Repository must be "public" to use GitHub pages. <br />
+JavaDocs created and stored in docs folder.
 
 ## Diagrams
 
