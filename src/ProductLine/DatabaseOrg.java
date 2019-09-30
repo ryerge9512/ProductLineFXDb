@@ -26,11 +26,10 @@ public class DatabaseOrg {
     insertData(prodName, manufacturer, itemType);
   }
 
-
   protected void initializeDb() {
 
     final String JDBC_DRIVER = "org.h2.Driver";
-    final String DB_URL = "jdbc:h2:./res/ProductionDB";
+    final String DB_URL = "jdbc:h2:C:/Users/Owner/Desktop/FGCU/Fall_2019/OOP/ProductLineFXDb/res/ProductionDB";
 
     // database credentials
     final String USER = "";
@@ -40,7 +39,6 @@ public class DatabaseOrg {
 
       Class.forName(JDBC_DRIVER);
       conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
 
     } catch (Exception ex) {
       ex.printStackTrace();
