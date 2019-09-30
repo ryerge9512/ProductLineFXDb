@@ -20,7 +20,8 @@ public class ProductLineController extends DatabaseOrg {
 
   @FXML
   protected void handleAddProductButtonAction(ActionEvent event) {
-    DatabaseOrg db = new DatabaseOrg(prodName.getText(), manufacturer.getText(),
+    DatabaseOrg db = new DatabaseOrg();
+    db.insertData(prodName.getText(), manufacturer.getText(),
         itemType.getText());
   }
 
