@@ -1,3 +1,9 @@
+/**
+ * This is the Main class. The application begins here and loads .fxml sources and JavaFX scene
+ * begins.
+ *
+ * @author Ryan Yerge
+ */
 package ProductLine;
 
 import javafx.application.Application;
