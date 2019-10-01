@@ -45,7 +45,7 @@ public class DatabaseOrg {
      * be passed to DriverManager.
      */
     final String JDBC_DRIVER = "org.h2.Driver";
-    final String DB_URL = "jdbc:h2:./res/ProductionDB";
+    final String DB_URL = "jdbc:h2:./res/res/ProductionDB";
     /**
      * User name and password defined as Strings to be passed
      * to DriverManager.
@@ -78,8 +78,8 @@ public class DatabaseOrg {
      * SQL INSERT statement includes data entered by user at GUI layer.
      */
     final String sql =
-        "INSERT INTO Product (name, type, manufacturer) VALUES (" + prodName + ", " + itemType
-            + ", " + manufacturer + ")";
+        "INSERT INTO PRODUCT (NAME, TYPE, MANUFACTURER) values (" + prodName + ", " + manufacturer + ", "
+        + itemType + ")";
 
     try {
 
