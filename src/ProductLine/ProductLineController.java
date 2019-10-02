@@ -37,8 +37,8 @@ public class ProductLineController extends DatabaseOrg {
   @FXML
   protected void handleAddProductButtonAction(ActionEvent event) throws SQLException {
     DatabaseOrg db = new DatabaseOrg();
-    db.insertData(prodName.getText(), manufacturer.getText(),
-        itemType.getText());
+    db.insertData("" + prodName.getText(), "" + itemType.getText(),
+       "" + manufacturer.getText());
   }
 
   /**

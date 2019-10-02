@@ -72,25 +72,27 @@ public class DatabaseOrg {
    * @param itemType This is the type of item being added.
    * @throws SQLException If product fails to be added, an exception is thrown.
    */
-  protected void insertData(String prodName, String manufacturer, String itemType)
+  protected void insertData(String prodName, String itemType, String manufacturer)
       throws SQLException {
     /**
      * SQL INSERT statement includes data entered by user at GUI layer.
      */
     final String sql =
-        "INSERT INTO PRODUCT (NAME, TYPE, MANUFACTURER) values (" + prodName + ", " + manufacturer + ", "
-        + itemType + ")";
+        "INSERT INTO PRODUCT (NAME, TYPE, MANUFACTURER) VALUES (?, ?, ?)";
 
     try {
 
       PreparedStatement insertStmt = conn.prepareStatement(sql);
+      insertStmt.setString(1, prodName);
+      insertStmt.setString(2, itemType);
+      insertStmt.setString(3, manufacturer);
       ResultSetMetaData showData = insertStmt.getMetaData();
 
       int numberOfColumns = showData.getColumnCount();
 
-      for (int i = 1; i <= numberOfColumns; i++) {
+      for (int i = 1; i <= numberOfColumns; i++)
         existingProducts.getTableView().getItems().add(showData);
-      }
+
       insertStmt.close();
     } catch (Exception ex) {
       ex.printStackTrace();
