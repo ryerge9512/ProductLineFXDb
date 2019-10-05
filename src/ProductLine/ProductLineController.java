@@ -18,7 +18,7 @@ import javafx.scene.control.TextField;
 /**
  * This class represents the controller component. It responds to action events and user stimuli at
  * the GUI layer and handles requests appropriately.
- *
+ * <p>
  * Class inherits from DatabaseOrg class to allow access to instance methods and fields.
  *
  * @author Ryan Yerge
@@ -74,10 +74,11 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
   }
 
   /**
-   * The initialize() method is implemented from the Initialize interface.
-   * It initializes the Quantity ComboBox in the Produce GUI tab to select values 1 - 10.
-   * It also initializes the ChoiceBox in the Product Line tab  from the ItemType Enum class
-   * for the desired item type to be inserted into the database.
+   * The initialize() method is implemented from the Initialize interface. It initializes the
+   * Quantity ComboBox in the Produce GUI tab to select values 1 - 10. It also initializes the
+   * ChoiceBox in the Product Line tab  from the ItemType Enum class for the desired item type to be
+   * inserted into the database.
+   *
    * @param location
    * @param resources
    */
