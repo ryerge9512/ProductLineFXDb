@@ -1,5 +1,11 @@
 package ProductLine;
 
+/**
+ * This class creates enum codes for different item types entered into the database.
+ *
+ * @author Ryan Yerge
+ */
+
 public enum ItemType {
   AUDIO ("AU"),
   VISUAL ("VI"),

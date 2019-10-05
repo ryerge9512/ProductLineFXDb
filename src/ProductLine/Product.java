@@ -1,6 +1,12 @@
 package ProductLine;
 
-public class Product implements Item {
+/**
+ * This class implements the methods contracted by the interface.
+ *
+ * @author Ryan Yerge
+ */
+
+public abstract class Product implements Item {
 
   private int id;
   private String type;
@@ -39,7 +45,21 @@ public class Product implements Item {
   }
 
   public String toString() {
-    return "Name: " + name.toString() + "\nManufacturer: " + manufacturer.toString()
-        + "\nType: " + type.toString();
+    return "Name: " + name + "\nManufacturer: " + manufacturer
+        + "\nType: " + type;
   }
 }
+
+/**
+ * Widget class to test Product/ItemType interface
+ */
+
+/*
+class Widget extends Product {
+
+  Widget(String name, String manufacturer, String type)
+  {
+    super(name, manufacturer, type);
+  }
+}
+ */

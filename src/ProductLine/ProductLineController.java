@@ -1,11 +1,6 @@
 //analyze --> inspect
 //must not find suspicious code
-/**
- * This class represents the controller component. It responds to action events and user stimuli at
- * the GUI layer and handles requests appropriately.
- *
- * @author Ryan Yerge
- */
+
 package ProductLine;
 
 import java.net.URL;
@@ -20,10 +15,18 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+/**
+ * This class represents the controller component. It responds to action events and user stimuli at
+ * the GUI layer and handles requests appropriately.
+ *
+ * Class inherits from DatabaseOrg class to allow access to instance methods and fields.
+ *
+ * @author Ryan Yerge
+ */
+
 public class ProductLineController extends DatabaseOrg implements Initializable {
 
   /**
-   * Class inherits from DatabaseOrg class to allow access to instance methods and fields.
    * TextField objects created to represent user input when a product is added to the database.
    */
 
