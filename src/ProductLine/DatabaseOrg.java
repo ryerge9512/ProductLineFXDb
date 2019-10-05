@@ -12,25 +12,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 
 public class DatabaseOrg {
 
   /**
-   * TableColumn object created to manipulate the
-   * existing products pane in GUI.
-   *
-   * JDBC Connection object to establish
-   * connection to the H2 database.
+   * TableColumn object created to manipulate the existing products pane in GUI.
+   * <p>
+   * JDBC Connection object to establish connection to the H2 database.
    */
   @FXML
   TableColumn existingProducts;
   Connection conn;
+  PreparedStatement pstmt;
 
   /**
-   *Default constructor called when "Add Product" is clicked
-   * by user. It will call the initializeDb method.
+   * Default constructor called when "Add Product" is clicked by user. It will call the initializeDb
+   * method.
    */
   protected DatabaseOrg() {
     initializeDb();
@@ -64,18 +64,17 @@ public class DatabaseOrg {
   }
 
   /**
-   * Data to be inserted into database is passed.
-   * Translates into SQL logic.
+   * Data to be inserted into database is passed. Translates into SQL logic.
    *
-   * @param prodName This is the name of the product being added.
+   * @param prodName     This is the name of the product being added.
    * @param manufacturer This is the manufacturer of the product being added.
-   * @param itemType This is the type of item being added.
+   * @param itemType     This is the type of item being added.
    * @throws SQLException If product fails to be added, an exception is thrown.
    */
   protected void insertData(String prodName, String itemType, String manufacturer)
       throws SQLException {
     /**
-     * SQL INSERT statement includes data entered by user at GUI layer.
+     * SQL INSERT statement includes data entered by user at GUI level.
      */
     final String sql =
         "INSERT INTO PRODUCT (NAME, TYPE, MANUFACTURER) VALUES (?, ?, ?)";
@@ -86,18 +85,31 @@ public class DatabaseOrg {
       insertStmt.setString(1, prodName);
       insertStmt.setString(2, itemType);
       insertStmt.setString(3, manufacturer);
-      ResultSetMetaData showData = insertStmt.getMetaData();
-
-      int numberOfColumns = showData.getColumnCount();
-
-      for (int i = 1; i <= numberOfColumns; i++)
-        existingProducts.getTableView().getItems().add(showData);
+      insertStmt.executeUpdate();
 
       insertStmt.close();
     } catch (Exception ex) {
-      ex.printStackTrace();
+      throw new RuntimeException((ex));
     } finally {
       conn.close();
     }
+  }
+
+  protected void showData() {
+    try {
+
+      final String sql = "SELECT * FROM PRODUCT";
+      ResultSet rs = pstmt.executeQuery(sql);
+
+     /* int numberOfColumns = 0; // Fix this to display to Existing Products Pane
+
+      for (int i = 1; i <= numberOfColumns; i++)
+        existingProducts.getTableView().getItems().add(rs);
+      */
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+
   }
 }
