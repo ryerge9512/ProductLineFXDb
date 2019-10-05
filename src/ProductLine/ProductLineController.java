@@ -20,14 +20,13 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-/**
- * Class inherits from DatabaseOrg class to allow access to instance methods and fields.
- */
 public class ProductLineController extends DatabaseOrg implements Initializable {
 
   /**
+   * Class inherits from DatabaseOrg class to allow access to instance methods and fields.
    * TextField objects created to represent user input when a product is added to the database.
    */
+
   @FXML
   private TextField prodName;
   @FXML
@@ -47,6 +46,7 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
    * @param event This is the event object created when "Add Product" is pressed.
    * @throws SQLException Exception thrown when database fails to connect.
    */
+
   @FXML
   protected void handleAddProductButtonAction(ActionEvent event) throws SQLException {
     DatabaseOrg db = new DatabaseOrg();
@@ -64,12 +64,20 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
    *
    * @param event This is the event object created when "Record Production" is pressed by the user.
    */
+
   @FXML
   protected void handleRecordProdButtonAction(ActionEvent event) {
     System.out.println("Record Production button pressed.");
   }
 
-  //  JavaDocs need to go here
+  /**
+   * The initialize() method is implemented from the Initialize interface.
+   * It initializes the Quantity ComboBox in the Produce GUI tab to select values 1 - 10.
+   * It also initializes the ChoiceBox in the Product Line tab  from the ItemType Enum class
+   * for the desired item type to be inserted into the database.
+   * @param location
+   * @param resources
+   */
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {

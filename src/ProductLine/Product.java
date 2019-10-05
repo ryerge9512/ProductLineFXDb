@@ -7,6 +7,12 @@ public class Product implements Item {
   private String manufacturer;
   private String name;
 
+  Product(String name, String manufacturer, String type){
+    this.name = name;
+    this.manufacturer = manufacturer;
+    this.type = type;
+  }
+
   @Override
   public int getId() {
     return id;
@@ -30,5 +36,10 @@ public class Product implements Item {
   @Override
   public String getManufacturer() {
     return manufacturer;
+  }
+
+  public String toString() {
+    return "Name: " + name.toString() + "\nManufacturer: " + manufacturer.toString()
+        + "\nType: " + type.toString();
   }
 }

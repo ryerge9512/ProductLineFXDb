@@ -3,8 +3,8 @@ package ProductLine;
 public enum ItemType {
   AUDIO ("AU"),
   VISUAL ("VI"),
-  AUDIOMOBILE ("AM"),
-  VISUALMOBILE ("VM");
+  AUDIO_MOBILE ("AM"),
+  VISUAL_MOBILE ("VM");
 
   private final String type;
 
