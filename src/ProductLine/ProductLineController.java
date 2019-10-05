@@ -10,20 +10,15 @@ package ProductLine;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-
 
 /**
  * Class inherits from DatabaseOrg class to allow access to instance methods and fields.
@@ -38,9 +33,9 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
   @FXML
   private TextField manufacturer;
   @FXML
-  ChoiceBox<ItemType> itemType;
+  private ChoiceBox<ItemType> itemType;
   @FXML
-  ComboBox<String> quantity;
+  private ComboBox<String> quantity;
 
   private ObservableList<String> options = FXCollections.observableArrayList("1",
       "2", "3", "4", "5", "6", "7", "8", "9", "10"
@@ -55,8 +50,8 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
   @FXML
   protected void handleAddProductButtonAction(ActionEvent event) throws SQLException {
     DatabaseOrg db = new DatabaseOrg();
-     db.insertData("" + prodName.getText(), "" + itemType.getValue().getType(),
-         "" + manufacturer.getText());
+    db.insertData("" + prodName.getText(), "" + itemType.getValue().getType(),
+        "" + manufacturer.getText());
 
     prodName.clear();
     manufacturer.clear();
