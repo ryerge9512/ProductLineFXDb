@@ -1,7 +1,7 @@
 package ProductLine;
 
 /**
- * This class implements the methods contracted by the interface.
+ * This class implements the methods contracted by the Item interface.
  *
  * @author Ryan Yerge
  */
