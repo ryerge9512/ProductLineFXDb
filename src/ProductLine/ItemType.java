@@ -1,7 +1,7 @@
 package ProductLine;
 
 /**
- * This class creates enum codes for different item types entered into the database.
+ * This class creates constant enum codes for different item types entered into the database.
  *
  * @author Ryan Yerge
  */
