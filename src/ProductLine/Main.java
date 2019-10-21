@@ -17,7 +17,7 @@ public class Main extends Application {
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+    Parent root = FXMLLoader.load(getClass().getResource("ProdTabForm.fxml"));
     primaryStage.setTitle("Production Line");
     Scene scene = new Scene(root, 300, 275);
     primaryStage.setScene(scene);

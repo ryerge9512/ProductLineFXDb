@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 /**
@@ -38,6 +39,8 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
   private ChoiceBox<ItemType> itemType;
   @FXML
   private ComboBox<String> quantity;
+  @FXML
+  TextArea prodLog;
 
   private ObservableList<String> options = FXCollections.observableArrayList("1",
       "2", "3", "4", "5", "6", "7", "8", "9", "10"
@@ -90,6 +93,8 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
     quantity.getSelectionModel().selectFirst();
 
     itemType.getItems().setAll(ItemType.values());
+    ProductionRecord display = new ProductionRecord(0);
+    prodLog.appendText(display.toString());
   }
 }
 
