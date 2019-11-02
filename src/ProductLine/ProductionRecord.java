@@ -8,11 +8,21 @@ public class ProductionRecord {
   private int productId;
   private String serialNumber;
   private Date dateProduced;
+  private static int prodDigits = 0;
 
   public ProductionRecord(int productId) {
     this.productId = productId;
     productionNumber = 0;
     serialNumber = "0";
+    dateProduced = new Date();
+  }
+
+  public ProductionRecord(Product item, int count){
+    String manuf = item.getManufacturer().substring(0,3);
+    String type = item.getItemType().getType();
+    String number = String.format("%05d",prodDigits);
+    serialNumber = manuf + type + number;
+    prodDigits++;
     dateProduced = new Date();
   }
 
@@ -57,7 +67,7 @@ public class ProductionRecord {
   }
 
   public String toString() {
-    return "Prod. Num: " + productionNumber + "\nProduct ID: " + productId +
-        "\nSerial Num.: " + serialNumber + "\nDate: " + dateProduced;
+    return "Prod. Num: " + productionNumber + " Product ID: " + productId +
+        " Serial Num: " + serialNumber + " Date: " + dateProduced;
   }
 }

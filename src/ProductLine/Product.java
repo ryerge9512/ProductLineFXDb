@@ -9,11 +9,11 @@ package ProductLine;
 public abstract class Product implements Item {
 
   private int id;
-  private String type;
+  private ItemType type;
   private String manufacturer;
   private String name;
 
-  Product(String name, String manufacturer, String type) {
+  Product(String name, String manufacturer, ItemType type) {
     this.name = name;
     this.manufacturer = manufacturer;
     this.type = type;
@@ -22,6 +22,10 @@ public abstract class Product implements Item {
   @Override
   public int getId() {
     return id;
+  }
+
+  public ItemType getItemType() {
+    return type;
   }
 
   @Override
@@ -54,12 +58,11 @@ public abstract class Product implements Item {
  * Widget class to test Product/ItemType interface
  */
 
-/*
+
 class Widget extends Product {
 
-  Widget(String name, String manufacturer, String type)
+  Widget(String name, String manufacturer, ItemType type)
   {
     super(name, manufacturer, type);
   }
 }
- */
