@@ -42,6 +42,8 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
   @FXML
   TextArea prodLog;
 
+  private ObservableList<Product> productLine;
+
   private ObservableList<String> options = FXCollections.observableArrayList("1",
       "2", "3", "4", "5", "6", "7", "8", "9", "10"
   );
@@ -58,6 +60,8 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
     DatabaseOrg db = new DatabaseOrg();
     db.insertData("" + prodName.getText(), "" + itemType.getValue().getType(),
         "" + manufacturer.getText());
+
+    productLine.add(new Widget(prodName.getText(),manufacturer.getText(), itemType.getValue()));
 
     prodName.clear();
     manufacturer.clear();
@@ -80,7 +84,7 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
    * The initialize() method is implemented from the Initialize interface. It initializes the
    * Quantity ComboBox in the Produce GUI tab to select values 1 - 10. It also initializes the
    * ChoiceBox in the Product Line tab  from the ItemType Enum class for the desired item type to be
-   * inserted into the database.
+   * inserted into the database. Production Log window is updated with items currently in DB.
    *
    * @param location
    * @param resources
