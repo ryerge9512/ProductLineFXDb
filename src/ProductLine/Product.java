@@ -12,11 +12,13 @@ public abstract class Product implements Item {
   private ItemType type;
   private String manufacturer;
   private String name;
+  private String itemType;
 
   Product(String name, String manufacturer, ItemType type) {
     this.name = name;
     this.manufacturer = manufacturer;
     this.type = type;
+    itemType = type.getType();
   }
 
   @Override
@@ -50,7 +52,7 @@ public abstract class Product implements Item {
 
   public String toString() {
     return "Name: " + name + "\nManufacturer: " + manufacturer
-        + "\nType: " + type;
+        + "\nType: " + type + "\n\n";
   }
 }
 
@@ -61,8 +63,7 @@ public abstract class Product implements Item {
 
 class Widget extends Product {
 
-  Widget(String name, String manufacturer, ItemType type)
-  {
+  Widget(String name, String manufacturer, ItemType type) {
     super(name, manufacturer, type);
   }
 }

@@ -23,8 +23,6 @@ public class DatabaseOrg {
    * <p>
    * JDBC Connection object to establish connection to the H2 database.
    */
-  @FXML
-  TableColumn existingProducts;
   Connection conn;
   PreparedStatement pstmt;
 
@@ -94,21 +92,4 @@ public class DatabaseOrg {
       conn.close();
     }
   }
-/*
-  protected void showData() {
-    try {
-
-      final String sql = "SELECT * FROM PRODUCT";
-      ResultSet rs = pstmt.executeQuery(sql);
-
-      int numberOfColumns = 0; // Fix this to display to Existing Products Pane
-
-      for (int i = 1; i <= numberOfColumns; i++)
-        existingProducts.getTableView().getItems().add(rs);
-
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-  }
-  */
 }

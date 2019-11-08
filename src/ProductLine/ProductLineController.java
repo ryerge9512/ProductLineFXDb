@@ -13,8 +13,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * This class represents the controller component. It responds to action events and user stimuli at
@@ -41,8 +45,14 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
   private ComboBox<String> quantity;
   @FXML
   TextArea prodLog;
+  @FXML
+  TableView<Product> existingProducts;
+  @FXML
+  TableColumn<Product, String> productName, manuf, typeOf;
+  @FXML
+  ListView<Product> catalog;
 
-  private ObservableList<Product> productLine;
+  private ObservableList<Product> productLine = FXCollections.observableArrayList();
 
   private ObservableList<String> options = FXCollections.observableArrayList("1",
       "2", "3", "4", "5", "6", "7", "8", "9", "10"
@@ -61,7 +71,8 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
     db.insertData("" + prodName.getText(), "" + itemType.getValue().getType(),
         "" + manufacturer.getText());
 
-    productLine.add(new Widget(prodName.getText(),manufacturer.getText(), itemType.getValue()));
+    setupProductLineTable(
+        new Widget(prodName.getText(), manufacturer.getText(), itemType.getValue()));
 
     prodName.clear();
     manufacturer.clear();
@@ -77,8 +88,21 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
 
   @FXML
   protected void handleRecordProdButtonAction(ActionEvent event) {
-    System.out.println("Record Production button pressed.");
+    int amount = quantity.getSelectionModel().getSelectedIndex();
+    for (int i = 0; i <= amount; i++) {
+      prodLog.appendText(catalog.getSelectionModel().getSelectedItem().toString());
+    }
   }
+
+  public void setupProductLineTable(Product productInfo) {
+    productLine.add(productInfo);
+    productName.setCellValueFactory(new PropertyValueFactory("name"));
+    typeOf.setCellValueFactory(new PropertyValueFactory("itemType"));
+    manuf.setCellValueFactory(new PropertyValueFactory("manufacturer"));
+    existingProducts.setItems(productLine);
+    catalog.setItems(productLine);
+  }
+
 
   /**
    * The initialize() method is implemented from the Initialize interface. It initializes the
@@ -97,8 +121,8 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
     quantity.getSelectionModel().selectFirst();
 
     itemType.getItems().setAll(ItemType.values());
-    ProductionRecord display = new ProductionRecord(0);
-    prodLog.appendText(display.toString());
+    // ProductionRecord display = new ProductionRecord(0);
+    //  prodLog.appendText(display.toString());
   }
 }
 
