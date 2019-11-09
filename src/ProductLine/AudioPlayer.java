@@ -1,3 +1,8 @@
+/**
+ * This class defines fields and methods for different audio players manufactured.
+ *
+ */
+
 package ProductLine;
 
 public class AudioPlayer extends Product implements MultimediaControl {

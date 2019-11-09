@@ -21,7 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
- * This class represents the controller component. It responds to action events and user stimuli at
+ * This class represents the controller component of the MVC. It responds to action events and user stimuli at
  * the GUI layer and handles requests appropriately.
  * <p>
  * Class inherits from DatabaseOrg class to allow access to instance methods and fields.
@@ -44,13 +44,13 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
   @FXML
   private ComboBox<String> quantity;
   @FXML
-  TextArea prodLog;
+  private TextArea prodLog;
   @FXML
-  TableView<Product> existingProducts;
+  private TableView<Product> existingProducts;
   @FXML
-  TableColumn<Product, String> productName, manuf, typeOf;
+  private TableColumn<Product, String> productName, manuf, typeOf;
   @FXML
-  ListView<Product> catalog;
+  private ListView<Product> catalog;
 
   private ObservableList<Product> productLine = FXCollections.observableArrayList();
 
@@ -59,7 +59,8 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
   );
 
   /**
-   * Event handler for when the "Add Products" button is pressed by the user.
+   * Event handler for when the "Add Products" button is pressed by the user. Desired product is
+   * submitted to the database and setupProductLineTable() is called.
    *
    * @param event This is the event object created when "Add Product" is pressed.
    * @throws SQLException Exception thrown when database fails to connect.
@@ -80,19 +81,30 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
   }
 
   /**
-   * Method is to be defined at a later point. When the "Record Production" button is pressed, it
-   * prints to the console.
+   * Products added to database are shown in the "Produce" tab and allows the user to select
+   * quantities of desired products to add to the "Production Log" tab.
    *
    * @param event This is the event object created when "Record Production" is pressed by the user.
    */
 
   @FXML
   protected void handleRecordProdButtonAction(ActionEvent event) {
-    int amount = quantity.getSelectionModel().getSelectedIndex();
-    for (int i = 0; i <= amount; i++) {
-      prodLog.appendText(catalog.getSelectionModel().getSelectedItem().toString());
-    }
+    int amount = quantity.getSelectionModel().getSelectedIndex() + 1;
+
+    prodLog.appendText(catalog.getSelectionModel().getSelectedItem().toString()
+        + "\nQuantity: " + amount + "\n\n");
+
+    quantity.getSelectionModel().selectFirst();
+    catalog.getSelectionModel().clearSelection();
   }
+
+  /**
+   * Products added to the database when "Add Product" is clicked calls this method to set up the
+   * TableView to reflect submission of items to the database. The item's toString() is called to
+   * transpose item information to "Produce" tab for quantity selection.
+   *
+   * @param productInfo
+   */
 
   public void setupProductLineTable(Product productInfo) {
     productLine.add(productInfo);
@@ -102,7 +114,6 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
     existingProducts.setItems(productLine);
     catalog.setItems(productLine);
   }
-
 
   /**
    * The initialize() method is implemented from the Initialize interface. It initializes the
