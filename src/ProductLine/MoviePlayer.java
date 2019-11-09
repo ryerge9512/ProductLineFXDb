@@ -1,7 +1,6 @@
 /**
- * This class defines fields and methods for various movie players
- * to be manufactured. Inherits from the abstract Product class and implements
- * the MultimediaControl interface.
+ * This class defines fields and methods for various movie players to be manufactured. Inherits from
+ * the abstract Product class and implements the MultimediaControl interface.
  *
  * @author Ryan Yerge
  */
@@ -29,7 +28,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
    */
 
   public MoviePlayer(String name, String manufacturer, Screen screen, Enum
-      monitorType){
+      monitorType) {
     super(name, manufacturer, ItemType.VISUAL);
     this.screen = screen;
     this.monitorType = monitorType;
@@ -77,7 +76,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
    * @return a String displaying MoviePlayer's fields.
    */
 
-  public String toString(){
+  public String toString() {
     return super.toString() + "\n" + screen + "\nMonitor Type: " +
         monitorType;
   }

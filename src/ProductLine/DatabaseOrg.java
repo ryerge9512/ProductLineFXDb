@@ -30,6 +30,7 @@ public class DatabaseOrg {
    * Default constructor called when "Add Product" is clicked by user. It will call the initializeDb
    * method.
    */
+
   protected DatabaseOrg() {
     initializeDb();
   }
@@ -37,17 +38,22 @@ public class DatabaseOrg {
   /**
    * Connection to database is initialized
    */
+
   protected void initializeDb() {
+
     /**
      * Driver type and database URL defined as Strings to
      * be passed to DriverManager.
      */
+
     final String JDBC_DRIVER = "org.h2.Driver";
     final String DB_URL = "jdbc:h2:./res/res/ProductionDB";
+
     /**
      * User name and password defined as Strings to be passed
      * to DriverManager.
      */
+
     final String USER = "";
     final String PASS = "";
 
@@ -69,11 +75,14 @@ public class DatabaseOrg {
    * @param itemType     This is the type of item being added.
    * @throws SQLException If product fails to be added, an exception is thrown.
    */
+
   protected void insertData(String prodName, String itemType, String manufacturer)
       throws SQLException {
+
     /**
      * SQL INSERT statement includes data entered by user at GUI level.
      */
+
     final String sql =
         "INSERT INTO PRODUCT (NAME, TYPE, MANUFACTURER) VALUES (?, ?, ?)";
 

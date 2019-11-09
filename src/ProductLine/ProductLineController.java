@@ -1,6 +1,6 @@
 /**
- * This class represents the controller component of the MVC. It responds to action events and user stimuli at
- * the GUI layer and handles requests appropriately.
+ * This class represents the controller component of the MVC. It responds to action events and user
+ * stimuli at the GUI layer and handles requests appropriately.
  * <p>
  * Class inherits from DatabaseOrg class to allow access to instance methods and fields.
  *

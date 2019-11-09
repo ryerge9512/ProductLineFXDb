@@ -18,8 +18,8 @@ public class ProductionRecord {
   private static int prodDigits = 0;
 
   /**
-   * ProductionRecord constructor that defaults the productionNumber and serialNumber to zero.
-   * It accepts one parameter to assign the item's productId. Current date and time is logged through
+   * ProductionRecord constructor that defaults the productionNumber and serialNumber to zero. It
+   * accepts one parameter to assign the item's productId. Current date and time is logged through
    * Date object created.
    *
    * @param productId is passed and assigned while other fields are defaulted to zero.
@@ -37,7 +37,7 @@ public class ProductionRecord {
    * The first (3) characters are the manufacturer, followed by the item type enum, and then a (5)
    * digit product number.
    *
-   * @param item is the Product object passed to access fields for serial number creation.
+   * @param item  is the Product object passed to access fields for serial number creation.
    * @param count is later defined as the quantity of items created.
    */
 
@@ -55,9 +55,9 @@ public class ProductionRecord {
    * ProductionRecord's fields upon instantiation.
    *
    * @param productionNumber is passed and assigned to the ProductionRecord field productionNumber.
-   * @param productId is passed and assigned to the ProductionRecord field productionNumber.
-   * @param serialNumber is passed and assigned to the ProductionRecord field serialNumber.
-   * @param dateProduced is the Date object passed and assigned to the dateProduced field.
+   * @param productId        is passed and assigned to the ProductionRecord field productionNumber.
+   * @param serialNumber     is passed and assigned to the ProductionRecord field serialNumber.
+   * @param dateProduced     is the Date object passed and assigned to the dateProduced field.
    */
 
   public ProductionRecord(int productionNumber, int productId, String serialNumber,

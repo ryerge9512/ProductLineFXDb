@@ -22,9 +22,10 @@ public abstract class Product implements Item {
   /**
    * Constructor for each Product object and assigns its fields from passed parameters.
    *
-   * @param name is passed and assigned to the Product's name field.
+   * @param name         is passed and assigned to the Product's name field.
    * @param manufacturer is passed and assigned to the Product's manufacturer field.
-   * @param type is the Enum object passed to allow access to its fields and assign to the itemType field.
+   * @param type         is the Enum object passed to allow access to its fields and assign to the
+   *                     itemType field.
    */
 
   Product(String name, String manufacturer, ItemType type) {
@@ -112,8 +113,8 @@ public abstract class Product implements Item {
 }
 
 /**
- * Widget class to test Product/ItemType interface and allow abstract
- * Product class to be instantiated and stored in a collection.
+ * Widget class to test Product/ItemType interface and allow abstract Product class to be
+ * instantiated and stored in a collection.
  */
 
 class Widget extends Product {

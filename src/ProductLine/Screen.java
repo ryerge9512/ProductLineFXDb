@@ -1,7 +1,6 @@
 /**
- *This class will define and display all of the characteristics for all
- * movie players.
- *
+ * This class will define and display all of the characteristics for all movie players.
+ * <p>
  * author: Ryan Yerge
  */
 
@@ -26,7 +25,7 @@ public class Screen implements ScreenSpec {
    * @param responseTime will set the response time of the screen.
    */
 
-  public Screen(String resolution, int refreshRate, int responseTime){
+  public Screen(String resolution, int refreshRate, int responseTime) {
     this.resolution = resolution;
     this.refreshRate = refreshRate;
     this.responseTime = responseTime;

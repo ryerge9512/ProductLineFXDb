@@ -1,7 +1,6 @@
 /**
- * This class defines fields and methods for various audio players
- * to be manufactured. Inherits from the abstract Product class and implements
- * the MultimediaControl interface.
+ * This class defines fields and methods for various audio players to be manufactured. Inherits from
+ * the abstract Product class and implements the MultimediaControl interface.
  *
  * @author Ryan Yerge
  */

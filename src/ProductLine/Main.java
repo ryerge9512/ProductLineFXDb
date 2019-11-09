@@ -32,8 +32,8 @@ public class Main extends Application {
   }
 
   /**
-   * This is the testing method to ensure the AudioPlayer, Screen, and MoviePlayer classes, along with
-   * the MonitorType Enum, MultimediaControl and ScreenSpec interfaces function properly.
+   * This is the testing method to ensure the AudioPlayer, Screen, and MoviePlayer classes, along
+   * with the MonitorType Enum, MultimediaControl and ScreenSpec interfaces function properly.
    */
 
   public static void testMultimedia() {
