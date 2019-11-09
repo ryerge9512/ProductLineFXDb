@@ -6,8 +6,11 @@
 
 package ProductLine;
 
+/**
+ * LCD and LED are the two MonitorType(s) defined for MoviePlayer objects created.
+ */
+
 public enum MonitorType {
   LCD,
   LED;
-
 }

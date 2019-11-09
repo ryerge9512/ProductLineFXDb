@@ -1,10 +1,10 @@
-package ProductLine;
-
 /**
  * This class interfaces the methods to be used by all classes.
  *
  * @author Ryan Yerge
  */
+
+package ProductLine;
 
 public interface Item {
 

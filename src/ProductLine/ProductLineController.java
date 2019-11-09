@@ -1,5 +1,11 @@
-//analyze --> inspect
-//must not find suspicious code
+/**
+ * This class represents the controller component of the MVC. It responds to action events and user stimuli at
+ * the GUI layer and handles requests appropriately.
+ * <p>
+ * Class inherits from DatabaseOrg class to allow access to instance methods and fields.
+ *
+ * @author Ryan Yerge
+ */
 
 package ProductLine;
 
@@ -19,15 +25,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-/**
- * This class represents the controller component of the MVC. It responds to action events and user stimuli at
- * the GUI layer and handles requests appropriately.
- * <p>
- * Class inherits from DatabaseOrg class to allow access to instance methods and fields.
- *
- * @author Ryan Yerge
- */
 
 public class ProductLineController extends DatabaseOrg implements Initializable {
 

@@ -4,6 +4,7 @@
  *
  * @author Ryan Yerge
  */
+
 package ProductLine;
 
 import java.util.ArrayList;
@@ -30,6 +31,10 @@ public class Main extends Application {
     //testMultimedia();
   }
 
+  /**
+   * This is the testing method to ensure the AudioPlayer, Screen, and MoviePlayer classes, along with
+   * the MonitorType Enum, MultimediaControl and ScreenSpec interfaces function properly.
+   */
 
   public static void testMultimedia() {
     AudioPlayer newAudioProduct = new AudioPlayer("DP-X1A", "Onkyo",

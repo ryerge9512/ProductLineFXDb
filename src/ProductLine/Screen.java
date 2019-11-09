@@ -9,12 +9,16 @@ package ProductLine;
 
 public class Screen implements ScreenSpec {
 
+  /**
+   * Defines fields to describe each movie player item created.
+   */
+
   private String resolution;
   private int refreshRate;
   private int responseTime;
 
   /**
-   * This constructor accepts three arugments for each of the fields
+   * This constructor accepts three arguments for each of the fields
    * declared in this class.
    *
    * @param resolution will set the resolution of the screen.
