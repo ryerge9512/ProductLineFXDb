@@ -6,6 +6,7 @@
 
 package ProductLine;
 
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,9 +27,9 @@ public class DatabaseOrg {
    * <p>
    * JDBC Connection object to establish connection to the H2 database.
    */
-  Connection conn;
-  PreparedStatement pstmt;
-  Statement stmt;
+  private Connection conn;
+  private PreparedStatement pstmt;
+  private Statement stmt;
   private ObservableList<Product> productLine = FXCollections.observableArrayList();
 
   /**
@@ -38,7 +40,7 @@ public class DatabaseOrg {
   protected DatabaseOrg() {
     try {
       initializeDb();
-    }catch(SQLException e){
+    } catch (SQLException e) {
       e.printStackTrace();
     }
   }
@@ -63,9 +65,12 @@ public class DatabaseOrg {
      */
 
     final String USER = "";
-    final String PASS = "";
+    final String PASS;
 
     try {
+      Properties prop = new Properties();
+      prop.load(new FileInputStream("./res/res/properties"));
+      PASS = prop.getProperty("password");
 
       Class.forName(JDBC_DRIVER);
       conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -110,30 +115,42 @@ public class DatabaseOrg {
     }
   }
 
+  /**
+   * This method is called when the initialize() method loads from the ProductLineController. It
+   * returns an ObservableList containing Products currently existing in the database, and it
+   * returns the product list to be reflected at the GUI level.
+   *
+   * @return ObservableList containing existing Products in the database.
+   * @throws SQLException
+   */
+
   protected ObservableList<Product> loadProductList() throws SQLException {
 
     final String sql = "SELECT * FROM PRODUCT";
-    stmt =  conn.createStatement();
+    stmt = conn.createStatement();
     ResultSet rs = stmt.executeQuery(sql);
     ItemType type = null;
 
-    while(rs.next()) {
+    while (rs.next()) {
       Integer ID = rs.getInt(1);
       String productName = rs.getString(2);
       String itemType = rs.getString(3);
       String manufacturer = rs.getString(4);
-      if(itemType.equalsIgnoreCase("audio")|| itemType.equalsIgnoreCase("AU"))
+      if (itemType.equalsIgnoreCase("audio") || itemType.equalsIgnoreCase("AU")) {
         type = ItemType.AUDIO;
-      if(itemType.equalsIgnoreCase("VI"))
+      }
+      if (itemType.equalsIgnoreCase("VI")) {
         type = ItemType.VISUAL;
-      if(itemType.equalsIgnoreCase("AM"))
+      }
+      if (itemType.equalsIgnoreCase("AM")) {
         type = ItemType.AUDIO_MOBILE;
-      if(itemType.equalsIgnoreCase("VM"))
+      }
+      if (itemType.equalsIgnoreCase("VM")) {
         type = ItemType.VISUAL_MOBILE;
+      }
 
       productLine.add(new Widget(productName, manufacturer, type));
     }
-
     return productLine;
   }
 }

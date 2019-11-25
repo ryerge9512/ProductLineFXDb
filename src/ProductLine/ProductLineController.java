@@ -69,7 +69,8 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
     db.insertData("" + prodName.getText(), "" + itemType.getValue().getType(),
         "" + manufacturer.getText());
 
-    Product productInfo = new Widget(prodName.getText(), manufacturer.getText(), itemType.getValue());
+    Product productInfo = new Widget(prodName.getText(), manufacturer.getText(),
+        itemType.getValue());
     productLine.add(productInfo);
     setupProductLineTable(productInfo);
 
@@ -134,8 +135,9 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
       DatabaseOrg db = new DatabaseOrg();
       productLine.addAll(db.loadProductList());
 
-      for(Product i : productLine)
+      for (Product i : productLine) {
         setupProductLineTable(i);
+      }
 
     } catch (SQLException e) {
       e.printStackTrace();
