@@ -69,8 +69,9 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
     db.insertData("" + prodName.getText(), "" + itemType.getValue().getType(),
         "" + manufacturer.getText());
 
-    setupProductLineTable(
-        new Widget(prodName.getText(), manufacturer.getText(), itemType.getValue()));
+    Product productInfo = new Widget(prodName.getText(), manufacturer.getText(), itemType.getValue());
+    productLine.add(productInfo);
+    setupProductLineTable(productInfo);
 
     prodName.clear();
     manufacturer.clear();
@@ -104,7 +105,6 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
    */
 
   public void setupProductLineTable(Product productInfo) {
-    productLine.add(productInfo);
     productName.setCellValueFactory(new PropertyValueFactory("name"));
     typeOf.setCellValueFactory(new PropertyValueFactory("itemType"));
     manuf.setCellValueFactory(new PropertyValueFactory("manufacturer"));
@@ -127,8 +127,21 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
     quantity.setItems(options);
     quantity.setEditable(true);
     quantity.getSelectionModel().selectFirst();
-
     itemType.getItems().setAll(ItemType.values());
+
+    try {
+
+      DatabaseOrg db = new DatabaseOrg();
+      productLine.addAll(db.loadProductList());
+
+      for(Product i : productLine)
+        setupProductLineTable(i);
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.println("Database could not retrieve contents.");
+    }
+
     // ProductionRecord display = new ProductionRecord(0);
     //  prodLog.appendText(display.toString());
   }

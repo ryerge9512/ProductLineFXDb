@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 
@@ -25,6 +27,8 @@ public class DatabaseOrg {
    */
   Connection conn;
   PreparedStatement pstmt;
+  Statement stmt;
+  private ObservableList<Product> productLine = FXCollections.observableArrayList();
 
   /**
    * Default constructor called when "Add Product" is clicked by user. It will call the initializeDb
@@ -32,14 +36,18 @@ public class DatabaseOrg {
    */
 
   protected DatabaseOrg() {
-    initializeDb();
+    try {
+      initializeDb();
+    }catch(SQLException e){
+      e.printStackTrace();
+    }
   }
 
   /**
    * Connection to database is initialized
    */
 
-  protected void initializeDb() {
+  protected void initializeDb() throws SQLException {
 
     /**
      * Driver type and database URL defined as Strings to
@@ -100,5 +108,32 @@ public class DatabaseOrg {
     } finally {
       conn.close();
     }
+  }
+
+  protected ObservableList<Product> loadProductList() throws SQLException {
+
+    final String sql = "SELECT * FROM PRODUCT";
+    stmt =  conn.createStatement();
+    ResultSet rs = stmt.executeQuery(sql);
+    ItemType type = null;
+
+    while(rs.next()) {
+      Integer ID = rs.getInt(1);
+      String productName = rs.getString(2);
+      String itemType = rs.getString(3);
+      String manufacturer = rs.getString(4);
+      if(itemType.equalsIgnoreCase("audio")|| itemType.equalsIgnoreCase("AU"))
+        type = ItemType.AUDIO;
+      if(itemType.equalsIgnoreCase("VI"))
+        type = ItemType.VISUAL;
+      if(itemType.equalsIgnoreCase("AM"))
+        type = ItemType.AUDIO_MOBILE;
+      if(itemType.equalsIgnoreCase("VM"))
+        type = ItemType.VISUAL_MOBILE;
+
+      productLine.add(new Widget(productName, manufacturer, type));
+    }
+
+    return productLine;
   }
 }

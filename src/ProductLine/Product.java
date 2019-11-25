@@ -13,7 +13,7 @@ public abstract class Product implements Item {
    * its name and a string to hold the Enum's string field.
    */
 
-  private int id;
+  private int ID;
   private ItemType type;
   private String manufacturer;
   private String name;
@@ -43,7 +43,7 @@ public abstract class Product implements Item {
 
   @Override
   public int getId() {
-    return id;
+    return ID;
   }
 
   /**
