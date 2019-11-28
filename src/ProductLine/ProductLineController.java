@@ -11,6 +11,7 @@ package ProductLine;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -45,11 +46,12 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
   @FXML
   private TableView<Product> existingProducts;
   @FXML
-  private TableColumn<Product, String> productName, manuf, typeOf;
+  private TableColumn<Product, String> productName, manuf, typeOf, prodID;
   @FXML
   private ListView<Product> catalog;
 
   private ObservableList<Product> productLine = FXCollections.observableArrayList();
+  private ArrayList<ProductionRecord> productionRun = new ArrayList<>();
 
   private ObservableList<String> options = FXCollections.observableArrayList("1",
       "2", "3", "4", "5", "6", "7", "8", "9", "10"
@@ -65,14 +67,20 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
 
   @FXML
   protected void handleAddProductButtonAction(ActionEvent event) throws SQLException {
-    DatabaseOrg db = new DatabaseOrg();
-    db.insertData("" + prodName.getText(), "" + itemType.getValue().getType(),
-        "" + manufacturer.getText());
+    try {
+      DatabaseOrg db = new DatabaseOrg();
+      db.insertData("" + prodName.getText(), "" + itemType.getValue().getType(),
+          "" + manufacturer.getText());
 
-    Product productInfo = new Widget(prodName.getText(), manufacturer.getText(),
-        itemType.getValue());
-    productLine.add(productInfo);
-    setupProductLineTable(productInfo);
+      Product productInfo = new Widget(prodName.getText(), manufacturer.getText(),
+          itemType.getValue());
+      productLine.add(productInfo);
+      setupProductLineTable(productInfo);
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+    } catch (Exception ex) {
+      System.out.println("Please enter all required fields.");
+    }
 
     prodName.clear();
     manufacturer.clear();
@@ -88,10 +96,26 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
 
   @FXML
   protected void handleRecordProdButtonAction(ActionEvent event) {
+
     int amount = quantity.getSelectionModel().getSelectedIndex() + 1;
 
-    prodLog.appendText(catalog.getSelectionModel().getSelectedItem().toString()
-        + "\nQuantity: " + amount + "\n\n");
+   try {
+     for(int i = 0; i < amount; i++) {
+
+       DatabaseOrg db = new DatabaseOrg();
+       productionRun.add(new ProductionRecord(catalog.getSelectionModel().getSelectedItem(),
+           amount));
+       db.insertRecord(productionRun.get(i).getProductionNumber(), productionRun.get(i).getProductId(),
+           productionRun.get(i).getSerialNumber(), productionRun.get(i).getDateProduced());
+     }
+   } catch (SQLException ex) {
+     ex.printStackTrace();
+    } catch (Exception ex) {
+     System.out.println("Please choose an item.");
+   }
+
+   for(ProductionRecord i : productionRun)
+     prodLog.appendText(i.toString());
 
     quantity.getSelectionModel().selectFirst();
     catalog.getSelectionModel().clearSelection();
@@ -109,8 +133,10 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
     productName.setCellValueFactory(new PropertyValueFactory("name"));
     typeOf.setCellValueFactory(new PropertyValueFactory("itemType"));
     manuf.setCellValueFactory(new PropertyValueFactory("manufacturer"));
+    prodID.setCellValueFactory(new PropertyValueFactory("ID"));
     existingProducts.setItems(productLine);
     catalog.setItems(productLine);
+   // System.out.println(productInfo.getId());
   }
 
   /**
@@ -132,20 +158,22 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
 
     try {
 
+      int productID;
       DatabaseOrg db = new DatabaseOrg();
       productLine.addAll(db.loadProductList());
+      productionRun.addAll(db.loadProductionLog());
 
-      for (Product i : productLine) {
+      for (Product i : productLine)
         setupProductLineTable(i);
+
+      for(ProductionRecord i : productionRun) {   // need to replace ID w/ product name
+        prodLog.appendText(i.toString() + "\n");
       }
 
     } catch (SQLException e) {
       e.printStackTrace();
       System.out.println("Database could not retrieve contents.");
     }
-
-    // ProductionRecord display = new ProductionRecord(0);
-    //  prodLog.appendText(display.toString());
   }
 }
 

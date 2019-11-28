@@ -42,12 +42,14 @@ public class ProductionRecord {
    */
 
   public ProductionRecord(Product item, int count) {
-    String manuf = item.getManufacturer().substring(0, 3);
-    String type = item.getItemType().getType();
-    String number = String.format("%05d", prodDigits);
-    serialNumber = manuf + type + number;
-    prodDigits++;
-    dateProduced = new Date();
+      String manuf = item.getManufacturer().substring(0, 3);
+      String type = item.getItemType().getType();
+      String number = String.format("%05d", prodDigits);
+      serialNumber = manuf + type + number;
+      productId = item.getId();
+      prodDigits++;
+      dateProduced = new Date();
+
   }
 
   /**
