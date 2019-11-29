@@ -44,6 +44,10 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
   @FXML
   private TextArea prodLog;
   @FXML
+  private TextField empName;
+  @FXML
+  private TextField empPassword;
+  @FXML
   private TableView<Product> existingProducts;
   @FXML
   private TableColumn<Product, String> productName, manuf, typeOf, prodID;
@@ -142,6 +146,19 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
     existingProducts.setItems(productLine);
     catalog.setItems(productLine);
     // System.out.println(productInfo.getId());
+  }
+
+  @FXML
+  protected void handleSubmitButtonAction(ActionEvent event) {
+    try{
+
+      Employee test = new Employee(empName.getText(), empPassword.getText());
+      empName.clear();;
+      empPassword.clear();
+      System.out.println(test);
+    }catch(Exception ex){
+      System.out.println("Please fill out all required fields.");
+    }
   }
 
   /**
