@@ -99,24 +99,29 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
 
     int amount = quantity.getSelectionModel().getSelectedIndex() + 1;
 
-   try {
-     for(int i = 0; i < amount; i++) {
-
-       DatabaseOrg db = new DatabaseOrg();
-       productionRun.add(new ProductionRecord(catalog.getSelectionModel().getSelectedItem(),
-           amount));
-       db.insertRecord(productionRun.get(i).getProductionNumber(), productionRun.get(i).getProductId(),
-           productionRun.get(i).getSerialNumber(), productionRun.get(i).getDateProduced());
-     }
-   } catch (SQLException ex) {
-     ex.printStackTrace();
+    try {
+      for (int i = 0; i < amount; i++) {
+        ProductionRecord pr = new ProductionRecord(catalog.getSelectionModel().getSelectedItem());
+        DatabaseOrg db = new DatabaseOrg();
+        productionRun.add(pr);
+        db.insertRecord(pr.getProductionNumber(),
+            pr.getProductId(),
+            pr.getSerialNumber(), pr.getDateProduced());
+      }
+    } catch (SQLException ex) {
+      ex.printStackTrace();
     } catch (Exception ex) {
-     System.out.println("Please choose an item.");
-   }
-
-   for(ProductionRecord i : productionRun)
-     prodLog.appendText(i.toString());
-
+      System.out.println("Please choose an item.");
+    }
+    prodLog.clear();
+    for (ProductionRecord i : productionRun) {
+      for (Product j : productLine) {
+        if (i.getProductId() == j.getId()) {
+          prodLog.appendText(i.toString().replaceFirst("Product ID: [0-9]+", " Name: "
+              + j.getName()) + "\n");
+        }
+      }
+    }
     quantity.getSelectionModel().selectFirst();
     catalog.getSelectionModel().clearSelection();
   }
@@ -136,7 +141,7 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
     prodID.setCellValueFactory(new PropertyValueFactory("ID"));
     existingProducts.setItems(productLine);
     catalog.setItems(productLine);
-   // System.out.println(productInfo.getId());
+    // System.out.println(productInfo.getId());
   }
 
   /**
@@ -157,19 +162,22 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
     itemType.getItems().setAll(ItemType.values());
 
     try {
-
-      int productID;
       DatabaseOrg db = new DatabaseOrg();
       productLine.addAll(db.loadProductList());
       productionRun.addAll(db.loadProductionLog());
 
-      for (Product i : productLine)
+      for (Product i : productLine) {
         setupProductLineTable(i);
-
-      for(ProductionRecord i : productionRun) {   // need to replace ID w/ product name
-        prodLog.appendText(i.toString() + "\n");
       }
 
+      for (ProductionRecord i : productionRun) {
+        for (Product j : productLine) {
+          if (i.getProductId() == j.getId()) {
+            prodLog.appendText(i.toString().replaceFirst("Product ID: [0-9]+", " Name: "
+                + j.getName()) + "\n");
+          }
+        }
+      }
     } catch (SQLException e) {
       e.printStackTrace();
       System.out.println("Database could not retrieve contents.");

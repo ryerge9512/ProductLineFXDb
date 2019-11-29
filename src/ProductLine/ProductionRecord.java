@@ -38,10 +38,9 @@ public class ProductionRecord {
    * digit product number.
    *
    * @param item  is the Product object passed to access fields for serial number creation.
-   * @param count is later defined as the quantity of items created.
    */
 
-  public ProductionRecord(Product item, int count) {
+  public ProductionRecord(Product item) {
       String manuf = item.getManufacturer().substring(0, 3);
       String type = item.getItemType().getType();
       String number = String.format("%05d", prodDigits);
