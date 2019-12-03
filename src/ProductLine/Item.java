@@ -8,7 +8,7 @@ package ProductLine;
 
 public interface Item {
 
-  public int getId();
+  public int getID();
 
   public void setName(String name);
 

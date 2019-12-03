@@ -50,7 +50,7 @@ public abstract class Product implements Item {
    */
 
   @Override
-  public int getId() {
+  public int getID() {
     return ID;
   }
 

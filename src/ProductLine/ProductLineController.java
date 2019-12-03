@@ -50,7 +50,9 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
   @FXML
   private TableView<Product> existingProducts;
   @FXML
-  private TableColumn<Product, String> productName, manuf, typeOf, prodID;
+  private TableColumn<Product, String> productName, manuf, typeOf;
+  @FXML
+  private TableColumn<Product, Integer> prodId;
   @FXML
   private ListView<Product> catalog;
 
@@ -120,7 +122,7 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
     prodLog.clear();
     for (ProductionRecord i : productionRun) {
       for (Product j : productLine) {
-        if (i.getProductId() == j.getId()) {
+        if (i.getProductId() == j.getID()) {
           prodLog.appendText(i.toString().replaceFirst("Product ID: [0-9]+", " Name: "
               + j.getName()) + "\n");
         }
@@ -142,10 +144,9 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
     productName.setCellValueFactory(new PropertyValueFactory("name"));
     typeOf.setCellValueFactory(new PropertyValueFactory("itemType"));
     manuf.setCellValueFactory(new PropertyValueFactory("manufacturer"));
-    prodID.setCellValueFactory(new PropertyValueFactory("ID"));
+    prodId.setCellValueFactory(new PropertyValueFactory<>("ID"));
     existingProducts.setItems(productLine);
     catalog.setItems(productLine);
-    // System.out.println(productInfo.getId());
   }
 
   @FXML
@@ -189,7 +190,7 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
 
       for (ProductionRecord i : productionRun) {
         for (Product j : productLine) {
-          if (i.getProductId() == j.getId()) {
+          if (i.getProductId() == j.getID()) {
             prodLog.appendText(i.toString().replaceFirst("Product ID: [0-9]+", " Name: "
                 + j.getName()) + "\n");
           }

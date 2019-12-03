@@ -45,7 +45,7 @@ public class ProductionRecord {
       String type = item.getItemType().getType();
       String number = String.format("%05d", prodDigits);
       serialNumber = manuf + type + number;
-      productId = item.getId();
+      productId = item.getID();
       prodDigits++;
       dateProduced = new Date();
 
