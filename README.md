@@ -12,7 +12,7 @@ Currently debugging database. Demonstration will be added later.
 
 ## Documentation
 
-Click [here](https://github.com/ryerge9512/ProductLineFXDb/blob/master/docs/index.html) to view documentation.
+Click [here](https://ryerge9512.github.io/ProductLineFXDb/) to view documentation.
 
 ## Diagrams
 
