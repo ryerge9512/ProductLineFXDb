@@ -1,3 +1,5 @@
+package ProductLine;
+
 /**
  * This class defines fields and methods for various movie players to be manufactured. Inherits from
  * the abstract Product class and implements the MultimediaControl interface.
@@ -5,13 +7,12 @@
  * @author Ryan Yerge
  */
 
-package ProductLine;
 
 public class MoviePlayer extends Product implements MultimediaControl {
 
   /**
-   * Defines two String fields for different screen and monitor types
-   * supported by the instantiated MoviePlayer object.
+   * Defines two String fields for different screen and monitor types supported by the instantiated
+   * MoviePlayer object.
    */
 
   private Screen screen;
@@ -21,10 +22,10 @@ public class MoviePlayer extends Product implements MultimediaControl {
    * Constructor for MoviePlayer object that calls the parent class constructor and assigns its
    * fields.
    *
-   * @param name is passed and sent to parent constructor.
+   * @param name         is passed and sent to parent constructor.
    * @param manufacturer is passed and sent to parent constructor.
-   * @param screen is passed and assigned to the screen field.
-   * @param monitorType is passed and assigned to the monitorType field.
+   * @param screen       is passed and assigned to the screen field.
+   * @param monitorType  is passed and assigned to the monitorType field.
    */
 
   public MoviePlayer(String name, String manufacturer, Screen screen, Enum

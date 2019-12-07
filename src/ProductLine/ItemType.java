@@ -1,10 +1,11 @@
+package ProductLine;
+
 /**
  * This class creates constant enum codes for different item types entered into the database.
  *
  * @author Ryan Yerge
  */
 
-package ProductLine;
 
 public enum ItemType {
   AUDIO("AU"),

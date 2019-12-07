@@ -1,12 +1,3 @@
-/**
- * This class represents the controller component of the MVC. It responds to action events and user
- * stimuli at the GUI layer and handles requests appropriately.
- * <p>
- * Class inherits from DatabaseOrg class to allow access to instance methods and fields.
- *
- * @author Ryan Yerge
- */
-
 package ProductLine;
 
 import java.net.URL;
@@ -26,6 +17,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+/**
+ * This class represents the controller component of the MVC. It responds to action events and user
+ * stimuli at the GUI layer and handles requests appropriately.
+ * <p>
+ * Class inherits from DatabaseOrg class to allow access to instance methods and fields.
+ *
+ * @author Ryan Yerge
+ */
 
 public class ProductLineController extends DatabaseOrg implements Initializable {
 
@@ -50,9 +50,7 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
   @FXML
   private TableView<Product> existingProducts;
   @FXML
-  private TableColumn<Product, String> productName, manuf, typeOf;
-  @FXML
-  private TableColumn<Product, Integer> prodId;
+  private TableColumn<Product, String> productName, manuf, typeOf, prodId;
   @FXML
   private ListView<Product> catalog;
 
@@ -137,27 +135,37 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
    * TableView to reflect submission of items to the database. The item's toString() is called to
    * transpose item information to "Produce" tab for quantity selection.
    *
-   * @param productInfo
+   * @param productInfo Product object is passed to access its toString() method.
    */
 
   public void setupProductLineTable(Product productInfo) {
     productName.setCellValueFactory(new PropertyValueFactory("name"));
     typeOf.setCellValueFactory(new PropertyValueFactory("itemType"));
     manuf.setCellValueFactory(new PropertyValueFactory("manufacturer"));
-    prodId.setCellValueFactory(new PropertyValueFactory<>("ID"));
+    prodId.setCellValueFactory(new PropertyValueFactory("ID"));
     existingProducts.setItems(productLine);
     catalog.setItems(productLine);
   }
 
+  /**
+   * This method handles the submit button action whenever the user inputs their full name and
+   * password to "login" to the production line database.
+   * <p>
+   * The Employee's toString() method is called to verify that the user inputted the correct
+   * credentials.
+   *
+   * @param event This is the event object created when "Submit" is pressed by the user.
+   */
+
   @FXML
   protected void handleSubmitButtonAction(ActionEvent event) {
-    try{
+    try {
 
       Employee test = new Employee(empName.getText(), empPassword.getText());
-      empName.clear();;
+      empName.clear();
       empPassword.clear();
       System.out.println(test);
-    }catch(Exception ex){
+    } catch (Exception ex) {
       System.out.println("Please fill out all required fields.");
     }
   }
@@ -168,8 +176,8 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
    * ChoiceBox in the Product Line tab  from the ItemType Enum class for the desired item type to be
    * inserted into the database. Production Log window is updated with items currently in DB.
    *
-   * @param location
-   * @param resources
+   * @param location  it's the only usage in Project Files.
+   * @param resources it's the only usage in Project Files.
    */
 
   @Override

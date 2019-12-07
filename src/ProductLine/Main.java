@@ -1,10 +1,3 @@
-/**
- * This is the Main class. The application begins here and loads .fxml sources and JavaFX scene
- * begins.
- *
- * @author Ryan Yerge
- */
-
 package ProductLine;
 
 import java.util.ArrayList;
@@ -13,6 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+/**
+ * This is the Main class. The application begins here and loads .fxml sources and JavaFX scene
+ * begins.
+ *
+ * @author Ryan Yerge
+ */
 
 public class Main extends Application {
 
@@ -36,6 +36,7 @@ public class Main extends Application {
    * with the MonitorType Enum, MultimediaControl and ScreenSpec interfaces function properly.
    */
 
+  /*
   public static void testMultimedia() {
     AudioPlayer newAudioProduct = new AudioPlayer("DP-X1A", "Onkyo",
         "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
@@ -52,7 +53,7 @@ public class Main extends Application {
       p.next();
       p.previous();
     }
-  }
+  }*/
 }
 
 

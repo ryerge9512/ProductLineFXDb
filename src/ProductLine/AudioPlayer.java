@@ -1,3 +1,5 @@
+package ProductLine;
+
 /**
  * This class defines fields and methods for various audio players to be manufactured. Inherits from
  * the abstract Product class and implements the MultimediaControl interface.
@@ -5,13 +7,11 @@
  * @author Ryan Yerge
  */
 
-package ProductLine;
-
 public class AudioPlayer extends Product implements MultimediaControl {
 
   /**
-   * Defines two String fields for different audio and playlist formats
-   * supported by the instantiated AudioPlayer object.
+   * Defines two String fields for different audio and playlist formats supported by the
+   * instantiated AudioPlayer object.
    */
 
   private String supportedAudioFormats;
@@ -21,9 +21,9 @@ public class AudioPlayer extends Product implements MultimediaControl {
    * Constructor for AudioPlayer object that calls the parent class constructor and assigns its
    * fields.
    *
-   * @param name is passed and sent to the parent class constructor.
-   * @param manufacturer is passed and sent to the parent class constructor.
-   * @param supportedAudioFormats is passed and assigned to the supportedAudioFormats field.
+   * @param name                     is passed and sent to the parent class constructor.
+   * @param manufacturer             is passed and sent to the parent class constructor.
+   * @param supportedAudioFormats    is passed and assigned to the supportedAudioFormats field.
    * @param supportedPlaylistFormats is passed and assigned to the supportedPlaylistFormats.
    */
 
@@ -77,7 +77,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
    */
 
   public String toString() {
-    return super.toString() + "\nSupported Audio Formats: " + supportedAudioFormats +
-        "\nSupported Playlist Formats: " + supportedPlaylistFormats;
+    return super.toString() + "\nSupported Audio Formats: " + supportedAudioFormats
+        + "\nSupported Playlist Formats: " + supportedPlaylistFormats;
   }
 }

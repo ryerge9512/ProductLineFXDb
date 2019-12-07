@@ -1,10 +1,10 @@
+package ProductLine;
+
 /**
  * This class will define and display all of the characteristics for all movie players.
  * <p>
  * author: Ryan Yerge
  */
-
-package ProductLine;
 
 public class Screen implements ScreenSpec {
 
@@ -17,11 +17,10 @@ public class Screen implements ScreenSpec {
   private int responseTime;
 
   /**
-   * This constructor accepts three arguments for each of the fields
-   * declared in this class.
+   * This constructor accepts three arguments for each of the fields declared in this class.
    *
-   * @param resolution will set the resolution of the screen.
-   * @param refreshRate will set the refresh rate of the screen.
+   * @param resolution   will set the resolution of the screen.
+   * @param refreshRate  will set the refresh rate of the screen.
    * @param responseTime will set the response time of the screen.
    */
 
@@ -33,6 +32,7 @@ public class Screen implements ScreenSpec {
 
   /**
    * Getter method for the resolution field.
+   *
    * @return returns resolution field.
    */
 
@@ -43,6 +43,7 @@ public class Screen implements ScreenSpec {
 
   /**
    * Getter method for refreshRate field.
+   *
    * @return returns refreshRate field.
    */
 
@@ -53,6 +54,7 @@ public class Screen implements ScreenSpec {
 
   /**
    * Getter method for responseTime field.
+   *
    * @return returns responseTime field.
    */
 
@@ -63,6 +65,7 @@ public class Screen implements ScreenSpec {
 
   /**
    * Overrides toString() method to display information about Screen object.
+   *
    * @return returns String containing fields relevant to object of interest.
    */
 

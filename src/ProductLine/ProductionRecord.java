@@ -1,13 +1,13 @@
+package ProductLine;
+
+import java.util.Date;
+
 /**
  * This class produces the ProductionRecord object with fields defined for the item's
  * productionNumber, productId, serialNumber, and the date the item was produced.
  *
  * @author Ryan Yerge
  */
-
-package ProductLine;
-
-import java.util.Date;
 
 public class ProductionRecord {
 
@@ -37,17 +37,17 @@ public class ProductionRecord {
    * The first (3) characters are the manufacturer, followed by the item type enum, and then a (5)
    * digit product number.
    *
-   * @param item  is the Product object passed to access fields for serial number creation.
+   * @param item is the Product object passed to access fields for serial number creation.
    */
 
   public ProductionRecord(Product item) {
-      String manuf = item.getManufacturer().substring(0, 3);
-      String type = item.getItemType().getType();
-      String number = String.format("%05d", prodDigits);
-      serialNumber = manuf + type + number;
-      productId = item.getID();
-      prodDigits++;
-      dateProduced = new Date();
+    String manuf = item.getManufacturer().substring(0, 3);
+    String type = item.getItemType().getType();
+    String number = String.format("%05d", prodDigits);
+    serialNumber = manuf + type + number;
+    productId = item.getID();
+    prodDigits++;
+    dateProduced = new Date();
 
   }
 

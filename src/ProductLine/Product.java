@@ -1,10 +1,10 @@
+package ProductLine;
+
 /**
  * This class inherits from Product and implements the methods implemented by the Item interface.
  *
  * @author Ryan Yerge
  */
-
-package ProductLine;
 
 public abstract class Product implements Item {
 
