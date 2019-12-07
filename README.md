@@ -16,7 +16,9 @@ Click [here](https://ryerge9512.github.io/ProductLineFXDb/) to view documentatio
 
 ## Diagrams
 
-![Class Diagrams](/Users/Owner/Desktop/FGCU/Fall_2019/OOP/ProductLineFXDbClassDiagrams.png)
+![Class Diagram](https://user-images.githubusercontent.com/47768094/70370922-78dcfc00-189a-11ea-83b1-27bad07c7a3f.PNG)
+<br />
+![Database Visualization](https://user-images.githubusercontent.com/47768094/70370923-7da1b000-189a-11ea-80d3-46de4658316b.PNG)
 
 ## Getting Started
 
