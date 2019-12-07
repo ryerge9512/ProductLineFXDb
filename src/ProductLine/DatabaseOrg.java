@@ -164,7 +164,7 @@ class DatabaseOrg {
 
     try {
 
-      PreparedStatement insertStmt = conn.prepareStatement(sql);
+      insertStmt = conn.prepareStatement(sql);
       Timestamp ts = new Timestamp(date.getTime());
       insertStmt.setInt(1, prodNum);
       insertStmt.setInt(2, prodID);
@@ -176,7 +176,6 @@ class DatabaseOrg {
     } catch (RuntimeException ex) {
       ex.printStackTrace();
     } finally {
-      insertStmt.closeOnCompletion();
       conn.close();
     }
   }
