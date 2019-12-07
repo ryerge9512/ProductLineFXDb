@@ -12,8 +12,7 @@ Currently debugging database. Demonstration will be added later.
 
 ## Documentation
 
-Repository must be "public" to use GitHub pages. <br />
-JavaDocs created and stored in docs folder.
+Click [here](https://github.com/ryerge9512/ProductLineFXDb/blob/master/docs/index.html) to view documentation.
 
 ## Diagrams
 
