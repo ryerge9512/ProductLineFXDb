@@ -13,7 +13,7 @@ public abstract class Product implements Item {
    * its name and a string to hold the Enum's string field.
    */
 
-  private Integer ID;
+  private int ID;
   private ItemType type;
   private String manufacturer;
   private String name;
@@ -28,12 +28,12 @@ public abstract class Product implements Item {
    *                     itemType field.
    */
 
-  Product(String name, String manufacturer, ItemType type, Integer id) {
+  Product(String name, String manufacturer, ItemType type, int id) {
     this.name = name;
     this.manufacturer = manufacturer;
     this.type = type;
-    itemType = type.getType();
-    ID = id;
+    this.itemType = type.getType();
+    this.ID = id;
   }
 
   Product(String name, String manufacturer, ItemType type) {
@@ -127,7 +127,7 @@ public abstract class Product implements Item {
 
 class Widget extends Product {
 
-  Widget(String name, String manufacturer, ItemType type, Integer id) {
+  Widget(String name, String manufacturer, ItemType type, int id) {
     super(name, manufacturer, type, id);
   }
 

@@ -20,7 +20,7 @@ public class Main extends Application {
   public void start(Stage primaryStage) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("ProdTabForm.fxml"));
     primaryStage.setTitle("Production Line");
-    Scene scene = new Scene(root, 300, 275);
+    Scene scene = new Scene(root, 550, 500);
     primaryStage.setScene(scene);
     scene.getStylesheets().add(Main.class.getResource("ProductLine.css").toExternalForm());
     primaryStage.show();

@@ -98,7 +98,7 @@ class DatabaseOrg {
       insertStmt.setString(2, itemType);
       insertStmt.setString(3, manufacturer);
       insertStmt.executeUpdate();
-      insertStmt.closeOnCompletion();
+      insertStmt.close();
     } catch (Exception ex) {
       throw new RuntimeException((ex));
     } finally {
@@ -123,7 +123,7 @@ class DatabaseOrg {
     ItemType type = null;
 
     while (rs.next()) {
-      Integer ID = rs.getInt(1);
+      int ID = rs.getInt(1);
       String productName = rs.getString(2);
       String itemType = rs.getString(3);
       String manufacturer = rs.getString(4);
@@ -196,8 +196,8 @@ class DatabaseOrg {
     ResultSet rs = stmt.executeQuery(sql);
 
     while (rs.next()) {
-      Integer prodNum = rs.getInt(1);
-      Integer ID = rs.getInt(2);
+      int prodNum = rs.getInt(1);
+      int ID = rs.getInt(2);
       String serialNum = rs.getString(3);
       Timestamp date = rs.getTimestamp(4);
       Date dateProd = new Date(date.getTime());

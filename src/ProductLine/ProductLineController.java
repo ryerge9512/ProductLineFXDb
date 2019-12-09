@@ -73,13 +73,17 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
   protected void handleAddProductButtonAction(ActionEvent event) throws SQLException {
     try {
       DatabaseOrg db = new DatabaseOrg();
+      DatabaseOrg update = new DatabaseOrg();
       db.insertData("" + prodName.getText(), "" + itemType.getValue().getType(),
           "" + manufacturer.getText());
 
-      Product productInfo = new Widget(prodName.getText(), manufacturer.getText(),
-          itemType.getValue());
-      productLine.add(productInfo);
-      setupProductLineTable(productInfo);
+      productLine.clear();
+      productLine.addAll(update.loadProductList());
+
+      for (Product i : productLine) {
+        setupProductLineTable(i);
+      }
+
     } catch (SQLException ex) {
       ex.printStackTrace();
     } catch (Exception ex) {
@@ -138,11 +142,11 @@ public class ProductLineController extends DatabaseOrg implements Initializable 
    * @param productInfo Product object is passed to access its toString() method.
    */
 
-  public void setupProductLineTable(Product productInfo) {
-    productName.setCellValueFactory(new PropertyValueFactory("name"));
-    typeOf.setCellValueFactory(new PropertyValueFactory("itemType"));
-    manuf.setCellValueFactory(new PropertyValueFactory("manufacturer"));
-    prodId.setCellValueFactory(new PropertyValueFactory("ID"));
+  private void setupProductLineTable(Product productInfo) {
+    productName.setCellValueFactory(new PropertyValueFactory<>("name"));
+    typeOf.setCellValueFactory(new PropertyValueFactory<>("itemType"));
+    manuf.setCellValueFactory(new PropertyValueFactory<>("manufacturer"));
+    prodId.setCellValueFactory(new PropertyValueFactory<>("ID"));
     existingProducts.setItems(productLine);
     catalog.setItems(productLine);
   }
