@@ -8,8 +8,7 @@ production reports.
 
 ## Demonstration
 
-Currently debugging database. Demonstration will be added later.
-
+<iframe src="https://giphy.com/embed/TIjVCmBqtQQMaVOsYC" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/java-javafx-scene-builder-TIjVCmBqtQQMaVOsYC">via GIPHY</a></p>
 ## Documentation
 
 Click [here](https://ryerge9512.github.io/ProductLineFXDb/) to view documentation.
