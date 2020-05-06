@@ -8,7 +8,7 @@ production reports.
 
 ## Demonstration
 
-(https://giphy.com/gifs/TIjVCmBqtQQMaVOsYC/html5)
+![Project GIF](https://media.giphy.com/media/TIjVCmBqtQQMaVOsYC/giphy.gif)
 
 ## Documentation
 
